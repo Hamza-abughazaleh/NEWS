@@ -1,0 +1,26 @@
+{% extends "main/layout/layout.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{#{% load crispy_forms_tags %}#}
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    {% include 'main/search.html' %}
+
+    <!-- Testimonials -->
+    <section class="testimonials text-center ">
+        <div class="container">
+            <h2 class="mb-5">{% trans "Our Partner" %}</h2>
+            <div class="row">
+                {% for website in websites %}
+                    <div class="col-lg-4 col-sm-6 portfolio-item">
+                        <div class="card w-100 h-100">
+                            <a href="{% url 'news_list' pk=website.id %}"><img class="card-img-top" src="{{ website.image.url }}" alt=""></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- /container -->
+
+{% endblock %}

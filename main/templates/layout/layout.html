@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+{% load i18n %}
+
+{% block base_content %}
+
+
+    {% include "layout/tools/header.html" %}
+    {% include 'main/slidebar.html' %}
+    <div canvas="container">
+        <main role="main">
+            {% block layout_content %}
+
+            {% endblock %}
+        </main>
+        {% include "layout/tools/footer.html" %}
+    </div>
+
+
+{% endblock %}

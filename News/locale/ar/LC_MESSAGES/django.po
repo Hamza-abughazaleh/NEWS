@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-22 15:19+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: AswaqCrawling/settings.py:36 crawling/models.py:11
+msgid "Arabic"
+msgstr "العربيّة"
+
+#: AswaqCrawling/settings.py:37 crawling/models.py:12
+msgid "English"
+msgstr "إنجليزي"
+
+#: crawling/templates/account/login.html:6
+#: crawling/templates/account/password_reset.html:5
+#: crawling/templates/account/password_reset_from_key.html:5
+#: crawling/templates/account/password_reset_from_key_done.html:5
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: crawling/templates/account/login.html:17
+msgid "Sign In"
+msgstr "تسجيل"
+
+#: crawling/templates/account/login.html:27
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"            of your existing third party accounts. Or, <a href="
+"\"%(signup_url)s\">sign up</a>\n"
+"            for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: crawling/templates/account/login.html:37
+msgid "or"
+msgstr ""
+
+#: crawling/templates/account/logout.html:3
+#: crawling/templates/account/logout.html:6
+#: crawling/templates/account/logout.html:9
+#: crawling/templates/account/logout.html:17
+#: crawling/templates/account/logout.html:27
+msgid "Sign Out"
+msgstr "تسجيل الخروج"
+
+#: crawling/templates/account/logout.html:20
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: crawling/templates/account/password_change.html:6
+#: crawling/templates/account/password_change.html:10
+#: crawling/templates/account/password_change.html:22
+msgid "CHANGE_PASSWORD"
+msgstr ""
+
+#: crawling/templates/account/password_reset.html:11
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: crawling/templates/account/password_reset.html:16
+msgid "Reset My Password"
+msgstr ""
+
+#: crawling/templates/account/password_reset.html:19
+msgid ""
+"Please contact us if you have any trouble resetting your\n"
+"        password."
+msgstr ""
+
+#: crawling/templates/account/password_reset_done.html:10
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few\n"
+"        minutes."
+msgstr ""
+
+#: crawling/templates/account/password_reset_from_key.html:9
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been\n"
+"            used.  Please request a <a href=\"%(passwd_reset_url)s\">new "
+"password reset</a>\n"
+"            ."
+msgstr ""
+
+#: crawling/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: crawling/templates/account/password_reset_from_key.html:21
+#: crawling/templates/account/password_reset_from_key_done.html:7
+msgid "Your password is now changed."
+msgstr ""
+
+#: crawling/templates/account/signup.html:6
+msgid "Register for an account"
+msgstr ""
+
+#: crawling/templates/account/signup.html:18
+msgid "Sign Up"
+msgstr ""
+
+#: crawling/templates/layout/base.html:13
+#: crawling/templates/layout/base.html:19
+msgid "Scrapy News"
+msgstr ""
+
+#: crawling/templates/layout/tools/footer.html:11
+msgid "About"
+msgstr "نبذة عنا"
+
+#: crawling/templates/layout/tools/footer.html:15
+msgid "Contact"
+msgstr "إتصل بنا"
+
+#: crawling/templates/layout/tools/footer.html:19
+msgid "Terms of Use"
+msgstr "الشروط و الأحكام"
+
+#: crawling/templates/layout/tools/footer.html:23
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#: crawling/templates/layout/tools/footer.html:26
+msgid "&copy; Your Website 2018. All Rights Reserved."
+msgstr ""
+
+#: crawling/templates/layout/tools/header.html:3
+msgid "Read News From All of World"
+msgstr "اقرأ الأخبار من كل العالم"
+
+#: crawling/templates/layout/tools/main_menu.html:5
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: crawling/templates/main/index.html:12
+msgid "Our Partner"
+msgstr "شركائنا"
+
+#: crawling/templates/main/search.html:8
+msgid "Find and Compare Millions <br> of News, All in One Spot </br>"
+msgstr "ابحث و قارن بين العديد <br> من الأخبار, كل ذلك بمكان واحد <br/>"
+
+#: crawling/templates/main/search.html:17
+msgid "What are you looking for..."
+msgstr "عن ماذا تبحث..."
+
+#: crawling/templates/main/search.html:20
+msgid "Search"
+msgstr "بحث"

@@ -1,0 +1,23 @@
+{% load staticfiles %}
+{% load i18n %}
+<div off-canvas="menu-slidebar {% if LANGUAGE_CODE == 'en' %}left{% else %}right{% endif %} shift">
+    <ul class="menu-slidebar-list">
+        <li class="menu-slidebar-item">
+            <a class="nav-link" href="{% url 'home' %}">
+                <i class="fas fa-home fa-1x"></i>
+                {% trans "Home" %}
+            </a>
+        </li>
+        <li class="menu-slidebar-item">
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                {% if language.code != LANGUAGE_CODE %}
+                    <a href="#" class="language-switcher nav-link">
+                        <i class="fa fa-globe " aria-hidden="true"></i>
+                        <span class="lang-switch">{{ language.name_local }}</span></a>
+                {% endif %}
+            {% endfor %}
+        </li>
+    </ul>
+</div>
