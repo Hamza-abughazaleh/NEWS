@@ -1,10 +1,14 @@
 {% load i18n %}
+{% load staticfiles %}
+{% get_current_language as LANGUAGE_CODE %}
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" canvas="header">
     <button class="js-toggle-slidebar toggler"
             type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand pl-3" href="{% url 'home' %}">{% trans 'Read News From All of World' %}</a>
+    <a class="navbar-brand pl-3" href="{% url 'home' %}">
+        <img class="mainlogo" src="{% if LANGUAGE_CODE == "en" %}{% static "img/news-en-logo.png" %}{% else %}{% static "img/news-ar-logo.png" %}{% endif %}">
+    </a>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 

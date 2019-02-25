@@ -27,7 +27,7 @@ SECRET_KEY = ')0yrc(b^u%^_4nk2oyxjpl1%8)2^gxll@1nj6$*9&qhoxi2esf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '40.0.0.131', '127.0.0.1', 'localhost']
 
 # Application definition
 LANGUAGE_CODE = 'ar'
@@ -40,6 +40,9 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, "News/locale"),
 )
 
+LANGUAGE_COOKIE_NAME = 'Newslang'
+LANGUAGE_COOKIE_AGE = 31537000
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     "compressor",
     'djcelery',
     'dynamic_scraper',
+    'user',
     'main',
 ]
 
@@ -179,3 +183,26 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 MAX_SPIDER_RUNS_PER_TASK: 10
 MAX_CHECKER_RUNS_PER_TASK: 25
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+AUTH_USER_MODEL = 'user.User'
+
+LOGIN_URL = '/user/login/'
+
+LOGIN_REDIRECT_URL = '/user/profile/'
+# DEFAULT_FROM_EMAIL = 'noreply@prizila.com'
+# # Password Reset Email
+# EMAIL_HOST = 'email-smtp.eu-west-1.amazonaws.com'
+# EMAIL_HOST_USER = 'AKIAIQZXO5TOOOQPROUQ'  # use your gmail
+# EMAIL_HOST_PASSWORD = 'ApNbP9P56EQPbaWxvx2oBGG1BeqehKWl16xMOwfpJhZA'  # gmail password
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True

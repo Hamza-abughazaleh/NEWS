@@ -9,7 +9,6 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 
-
 from django.views.generic import TemplateView, ListView, DetailView
 
 from main.models import News, WebsiteInfo
@@ -17,7 +16,8 @@ from main.models import News, WebsiteInfo
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    home = True
+    return render(request, 'main/index.html', {"home": home})
 
 
 class NewsListView(ListView):
@@ -70,35 +70,38 @@ class SerchForm(TemplateView):
             return redirect(reverse('home'))
 
 
-def main():
-    print("python main function")
-    text = "israel"
-    website = ["Al-Jazeera English"]
-    single_crawl_without_scheduling.apply_async(text, website)
+class PermissionDenied(TemplateView):
+    template_name = 'main/403.html'
 
-
-if __name__ == '__main__':
-    main()
-
-# def search(request):
-#     if request.method == "POST":
-#         text = request.POST.get('search_text')
-#         website = request.POST.getlist('check')
-#         if text:
-#             if website:
-#                 pass
-#             else:
-#                 news = News.objects.filter(title__contains=text)
+# def main():
+#     print("python main function")
+#     text = "israel"
+#     website = ["Al-Jazeera English"]
+#     single_crawl_without_scheduling.apply_async(text, website)
 #
-#             for data in news:
-#                 data.title
-#         if news:
-#             return render(request, 'main/index.html', {})
-#         else:
-#             if website:
-#                 new_website = NewsWebsite()
-#                 new_website.name = text + "search"
-#                 new_website.url = "www.www"
-#                 new_website.scraper = "sdfs"
-#                 new_website.scraper_runtime = "asdasd"
-#             return render(request, 'main/index.html', {})
+#
+# if __name__ == '__main__':
+#     main()
+#
+# # def search(request):
+# #     if request.method == "POST":
+# #         text = request.POST.get('search_text')
+# #         website = request.POST.getlist('check')
+# #         if text:
+# #             if website:
+# #                 pass
+# #             else:
+# #                 news = News.objects.filter(title__contains=text)
+# #
+# #             for data in news:
+# #                 data.title
+# #         if news:
+# #             return render(request, 'main/index.html', {})
+# #         else:
+# #             if website:
+# #                 new_website = NewsWebsite()
+# #                 new_website.name = text + "search"
+# #                 new_website.url = "www.www"
+# #                 new_website.scraper = "sdfs"
+# #                 new_website.scraper_runtime = "asdasd"
+# #             return render(request, 'main/index.html', {})

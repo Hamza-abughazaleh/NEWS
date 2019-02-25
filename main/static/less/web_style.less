@@ -1,0 +1,22 @@
+@desktop: ~"(min-width: 992px)";
+@mobile: ~"(max-width: 991px)";
+
+@import "style.less";
+@media @desktop {
+  //add her any styles related to web view only.
+  .result-container {
+    padding-top: 40px;
+    margin-top: 90px;
+  }
+
+  .registration-forms-container {
+    padding: 100px 200px;
+    margin-top: 90px;
+  }
+
+}
+
+@media @mobile {
+  //add her any styles related to responsive view in responsive.less only
+  @import "responsive.less";
+}
