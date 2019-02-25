@@ -1,0 +1,13 @@
+{{ field }}
+{% if field.help_text and help_text %}
+    <span class='help-block text-danger'>
+        {# We allow HTML within form help fields #}
+            {{ field.help_text|safe }}
+        </span>
+{% endif %}
+
+{% block errors %}
+    {% for error in field.errors %}
+        <span class="error-block text-danger"><i class="fa fa-exclamation-circle"></i> {{ error }}</span><br>
+    {% endfor %}
+{% endblock %}

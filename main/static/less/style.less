@@ -1,3 +1,9 @@
+@main-font-en: 'Barlow', sans-serif;
+@main-font-ar: 'Cairo', sans-serif;
+.font_family(@font) {
+  font-family: @font;
+}
+
 .menu-slidebar-list {
   list-style-type: none;
   padding-inline-start: 0px;
@@ -28,4 +34,22 @@
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: .25rem
+}
+
+.mainlogo {
+  max-width: 110px;
+}
+
+.result-container {
+  padding-top: 40px;
+  margin-top: 90px;
+}
+
+.registration-forms-container {
+  padding: 100px 200px;
+  margin-top: 90px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }

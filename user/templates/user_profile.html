@@ -1,0 +1,94 @@
+{% extends "main/layout/layout.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}
+    <div class="container result-container bg-white border">
+        <div class="row">
+            <div class="col-12">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <div class="thumbnail ">
+                            <img src="{% static '/img/noimg_profile.png' %}">
+                        </div>
+                        <div class="col-sm-12 pt-2">
+                            {% if user.first_name %}
+                                {{ user.get_full_name|default:'-' }}
+                            {% else %}
+                                {{ user.email|default:'-' }}
+                            {% endif %}
+                        </div>
+
+                        <div class="col-md-12">
+                            <a href="{% url 'user:update_profile' %}"
+                               class="btn btn-link">{% trans "Edit Info" %}</a> |
+                            <a href="{% url 'user:change_password' %}"
+                               class="btn btn-link">{% trans "Change password" %}</a>
+                        </div>
+                    </div>
+                    {% include "main/messages.html" %}
+                </div>
+                <div class="row pt-3">
+                    <div class="col-3 bold">{% trans "Email Address" %}</div>
+                    <div class=" col-8">
+                        {{ user.email }}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3 bold">{% trans "Full name" %}</div>
+                    <div class=" col-8">
+                        {% if user.first_name or user.last_name %}
+                            {{ user.get_full_name }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3 bold">{% trans "Gender" %}</div>
+                    <div class=" col-8">
+                        {% if user.gender %}
+                            {{ user.get_gender_display }}
+                        {% else %}
+                            Not specified
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3 bold">{% trans "Phone Number" %}</div>
+                    <div class=" col-8">
+                        {% if user.phone_number %}
+                            {{ user.phone_number }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
+                <div class="row pb-3">
+                    <div class="col-3 bold">{% trans "Address" %}</div>
+                    <div class=" col-8">
+                        {% if user.address %}
+                            {{ user.address }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </div>
+                </div>
+{#                {% if request.user.is_superuser or request.user.is_staff or request.user.is_user_paid %}#}
+{#                    <div class="row text-center">#}
+{#                        <div class="col-3 bold"></div>#}
+{#                        <div class="col-md-3 pb-3 pt-2 col-sm-8 col-md-offset-6 col-sm-offset-4 col-xs-6">#}
+{#                            <a href="{% url 'user:create_task' %}"#}
+{#                               class=" btn btn-block btn-primary btn-font-fff-bold"#}
+{#                               data-loading-text="{% trans "Saving..." %}">{% trans "Create New Task" %}#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
+            </div>
+        </div>
+    </div>
+{% endblock %}

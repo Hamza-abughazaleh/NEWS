@@ -1,0 +1,23 @@
+{% extends "main/layout/layout.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+        <div class="registration-forms-container bg-white border">
+            <h3 class="text-center">{% trans "Create Task" %}</h3>
+            {% include "main/messages.html" %}
+            <form method="POST" class="create_task_form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 pt-3">{% include 'main/form_field.html' with field=form.search_term %} </div>
+                    <div class="col-12 pt-3">{% include 'main/form_field.html' with field=form.website %}</div>
+                    <div class="col-12 ">{% include 'main/form_field.html' with field=form.action_type %}</div>
+                    <div class="col-12">
+                        <input type="submit" class="btn btn-success btn-block font-weight-bold"
+                               value="{% trans "Create Task" %}">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
