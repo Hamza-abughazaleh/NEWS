@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 15:19+0200\n"
+"POT-Creation-Date: 2019-03-04 09:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +19,30 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: AswaqCrawling/settings.py:36 crawling/models.py:11
+#: News/settings.py:36 main/models.py:11
 msgid "Arabic"
 msgstr "العربيّة"
 
-#: AswaqCrawling/settings.py:37 crawling/models.py:12
+#: News/settings.py:37 main/models.py:12
 msgid "English"
 msgstr "إنجليزي"
 
-#: crawling/templates/account/login.html:6
-#: crawling/templates/account/password_reset.html:5
-#: crawling/templates/account/password_reset_from_key.html:5
-#: crawling/templates/account/password_reset_from_key_done.html:5
+#: main/templates/account/login.html:6
+#: main/templates/account/password_reset.html:5
+#: main/templates/account/password_reset_from_key.html:5
+#: main/templates/account/password_reset_from_key_done.html:5
+#: main/templates/layout/tools/main_menu.html:35
+#: main/templates/layout/tools/slidebar.html:62 user/templates/login.html:13
+#: user/templates/password_reset_complete.html:9
+#: user/templates/register.html:16
 msgid "Login"
 msgstr "تسجيل الدخول"
 
-#: crawling/templates/account/login.html:17
+#: main/templates/account/login.html:17
 msgid "Sign In"
 msgstr "تسجيل"
 
-#: crawling/templates/account/login.html:27
+#: main/templates/account/login.html:27
 #, python-format
 msgid ""
 "Please sign in with one\n"
@@ -47,52 +51,50 @@ msgid ""
 "            for a %(site_name)s account and sign in below:"
 msgstr ""
 
-#: crawling/templates/account/login.html:37
+#: main/templates/account/login.html:37
 msgid "or"
-msgstr ""
+msgstr "أو"
 
-#: crawling/templates/account/logout.html:3
-#: crawling/templates/account/logout.html:6
-#: crawling/templates/account/logout.html:9
-#: crawling/templates/account/logout.html:17
-#: crawling/templates/account/logout.html:27
+#: main/templates/account/logout.html:3 main/templates/account/logout.html:6
+#: main/templates/account/logout.html:9 main/templates/account/logout.html:17
+#: main/templates/account/logout.html:27
 msgid "Sign Out"
 msgstr "تسجيل الخروج"
 
-#: crawling/templates/account/logout.html:20
+#: main/templates/account/logout.html:20
 msgid "Are you sure you want to sign out?"
 msgstr ""
 
-#: crawling/templates/account/password_change.html:6
-#: crawling/templates/account/password_change.html:10
-#: crawling/templates/account/password_change.html:22
+#: main/templates/account/password_change.html:6
+#: main/templates/account/password_change.html:10
+#: main/templates/account/password_change.html:22
 msgid "CHANGE_PASSWORD"
 msgstr ""
 
-#: crawling/templates/account/password_reset.html:11
+#: main/templates/account/password_reset.html:11
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
 msgstr ""
 
-#: crawling/templates/account/password_reset.html:16
+#: main/templates/account/password_reset.html:16
 msgid "Reset My Password"
 msgstr ""
 
-#: crawling/templates/account/password_reset.html:19
+#: main/templates/account/password_reset.html:19
 msgid ""
 "Please contact us if you have any trouble resetting your\n"
 "        password."
 msgstr ""
 
-#: crawling/templates/account/password_reset_done.html:10
+#: main/templates/account/password_reset_done.html:10
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few\n"
 "        minutes."
 msgstr ""
 
-#: crawling/templates/account/password_reset_from_key.html:9
+#: main/templates/account/password_reset_from_key.html:9
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been\n"
@@ -101,68 +103,280 @@ msgid ""
 "            ."
 msgstr ""
 
-#: crawling/templates/account/password_reset_from_key.html:18
+#: main/templates/account/password_reset_from_key.html:18
 msgid "change password"
-msgstr ""
+msgstr "تغير كلمة المرور"
 
-#: crawling/templates/account/password_reset_from_key.html:21
-#: crawling/templates/account/password_reset_from_key_done.html:7
+#: main/templates/account/password_reset_from_key.html:21
+#: main/templates/account/password_reset_from_key_done.html:7
 msgid "Your password is now changed."
 msgstr ""
 
-#: crawling/templates/account/signup.html:6
+#: main/templates/account/signup.html:6
 msgid "Register for an account"
 msgstr ""
 
-#: crawling/templates/account/signup.html:18
+#: main/templates/account/signup.html:18
 msgid "Sign Up"
 msgstr ""
 
-#: crawling/templates/layout/base.html:13
-#: crawling/templates/layout/base.html:19
-msgid "Scrapy News"
-msgstr ""
+#: main/templates/layout/base.html:13 main/templates/layout/base.html:19
+msgid "News"
+msgstr "أخبار"
 
-#: crawling/templates/layout/tools/footer.html:11
+#: main/templates/layout/tools/footer.html:11
 msgid "About"
 msgstr "نبذة عنا"
 
-#: crawling/templates/layout/tools/footer.html:15
+#: main/templates/layout/tools/footer.html:15
 msgid "Contact"
 msgstr "إتصل بنا"
 
-#: crawling/templates/layout/tools/footer.html:19
+#: main/templates/layout/tools/footer.html:19
 msgid "Terms of Use"
 msgstr "الشروط و الأحكام"
 
-#: crawling/templates/layout/tools/footer.html:23
+#: main/templates/layout/tools/footer.html:23
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
-#: crawling/templates/layout/tools/footer.html:26
+#: main/templates/layout/tools/footer.html:26
 msgid "&copy; Your Website 2018. All Rights Reserved."
 msgstr ""
 
-#: crawling/templates/layout/tools/header.html:3
-msgid "Read News From All of World"
-msgstr "اقرأ الأخبار من كل العالم"
+#: main/templates/layout/tools/main_menu.html:24
+#: main/templates/layout/tools/slidebar.html:26
+#: main/templates/layout/tools/slidebar.html:56
+msgid "Profile"
+msgstr "الحساب"
 
-#: crawling/templates/layout/tools/main_menu.html:5
+#: main/templates/layout/tools/main_menu.html:28
+#: main/templates/layout/tools/slidebar.html:32
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: main/templates/layout/tools/slidebar.html:9
+#: main/templates/layout/tools/slidebar.html:39
 msgid "Home"
 msgstr "الصفحة الرئيسية"
 
-#: crawling/templates/main/index.html:12
+#: main/templates/main/403.html:5 main/templates/main/403.html:9
+msgid "Permission denied!"
+msgstr "طلب الاذن مرفوض!"
+
+#: main/templates/main/403.html:13
+msgid "We're sorry but you are not permitted to access this page."
+msgstr "نحن نعتذر لكن لا تمتلك صلاحية لدخول هذه الصفحة"
+
+#: main/templates/main/error.html:13
+msgid "Go to homepage"
+msgstr "الصفحة الرئيسية"
+
+#: main/templates/main/index.html:12
 msgid "Our Partner"
 msgstr "شركائنا"
 
-#: crawling/templates/main/search.html:8
+#: main/templates/main/search.html:8
 msgid "Find and Compare Millions <br> of News, All in One Spot </br>"
 msgstr "ابحث و قارن بين العديد <br> من الأخبار, كل ذلك بمكان واحد <br/>"
 
-#: crawling/templates/main/search.html:17
+#: main/templates/main/search.html:17
 msgid "What are you looking for..."
 msgstr "عن ماذا تبحث..."
 
-#: crawling/templates/main/search.html:20
+#: main/templates/main/search.html:20
 msgid "Search"
 msgstr "بحث"
+
+#: user/forms.py:14 user/models.py:15
+msgid "In case we need to contact you"
+msgstr "في حال أردنا الإتصال بك"
+
+#: user/forms.py:16 user/templates/update_profile.html:51
+#: user/templates/user_profile.html:60
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: user/forms.py:22 user/templates/update_profile.html:30
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: user/forms.py:23 user/templates/update_profile.html:37
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+#: user/forms.py:25 user/models.py:17 user/templates/update_profile.html:58
+#: user/templates/user_profile.html:71
+msgid "Address"
+msgstr "العنوان"
+
+#: user/forms.py:58 user/forms.py:69
+msgid "Email address"
+msgstr "البريد الإلكتروني"
+
+#: user/forms.py:59 user/forms.py:74
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: user/forms.py:75 user/forms.py:104 user/forms.py:189
+#: user/templates/change_user_password.html:37
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: user/forms.py:80
+msgid "A user with that email address already exists"
+msgstr "يوجد مستخدم مسجل بالفعل بهذا البريد الإلكتروني"
+
+#: user/forms.py:103 user/forms.py:187
+#: user/templates/change_user_password.html:30
+msgid "New Password"
+msgstr "كلمة المرور الجديدة"
+
+#: user/forms.py:105 user/templates/change_user_password.html:23
+msgid "Old Password"
+msgstr "كلمة المرور القديمة"
+
+#: user/forms.py:117
+msgid "You must enter your old password."
+msgstr "يجب عليك إدخال كلمة المرور القديمة"
+
+#: user/forms.py:120
+msgid "The old password that you have entered is wrong."
+msgstr "كلمة المرور القديمة التي أدخلتها خاطئة"
+
+#: user/forms.py:174
+msgid "Enter your email..."
+msgstr "أدخل بريدك الإلكتروني..."
+
+#: user/forms.py:179
+msgid "Email Not Registred"
+msgstr "البريد الإلكتروني غير مسجل"
+
+#: user/models.py:10
+msgid "Choose gender"
+msgstr "إختيار الجنس"
+
+#: user/models.py:11 user/models.py:34
+msgid "Male"
+msgstr "ذكر"
+
+#: user/models.py:12 user/models.py:36
+msgid "Female"
+msgstr "أنثى"
+
+#: user/models.py:15
+msgid "Phone number"
+msgstr "رقم الهاتف"
+
+#: user/templates/change_user_password.html:47
+#: user/templates/update_profile.html:68
+msgid "Saving..."
+msgstr "جاري الحفظ..."
+
+#: user/templates/change_user_password.html:47
+#: user/templates/update_profile.html:68
+msgid "Save"
+msgstr "حفظ"
+
+#: user/templates/create_task.html:7 user/templates/create_task.html:17
+msgid "Create Task"
+msgstr "إنشاء مهمة"
+
+#: user/templates/login.html:15 user/templates/password_reset_form.html:7
+msgid "Forgot Your Password?"
+msgstr "نسيت كلمة مرورك؟"
+
+#: user/templates/login.html:19
+msgid "You Dont Have An Account?"
+msgstr "ليس لديك حساب؟"
+
+#: user/templates/login.html:20
+msgid "Register Now"
+msgstr "سجل الان"
+
+#: user/templates/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and "
+msgstr "تم تعين كلمة المرور. بإماكنك"
+
+#: user/templates/password_reset_complete.html:10
+msgid "now."
+msgstr "الان."
+
+#: user/templates/password_reset_confirm.html:8
+msgid "Create New Password"
+msgstr "إنشاء كلمة مرور جديدة"
+
+#: user/templates/password_reset_confirm.html:13
+#: user/templates/user_profile.html:25
+msgid "Change password"
+msgstr "تغير كلمة المرور"
+
+#: user/templates/password_reset_confirm.html:17
+msgid ""
+"The password reset link has expired, because it has already been used. "
+"Please request a new password reset."
+msgstr ""
+"رابط تغير كلمة المرور منتهي الصلاحية, لأنه تم إستخدامه. الرجاء طلب تغير كلمة "
+"مرور جديدة."
+
+
+#: user/templates/password_reset_done.html:8
+msgid ""
+"* We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"تم إرسال رسالة إلكترونية بالتعليمات لاعادة ضبظ كلمة مرورك. ستصلك التعليمات "
+"قريبا إذا كان البريد الإلكتروني موجود."
+
+#: user/templates/password_reset_done.html:11
+msgid ""
+"* If you don't receive an email, please make sure you've entered the email "
+"you registered with, and check your spam folder."
+msgstr ""
+"إذا لم يصلك رسالة إلكترونية الرجاء التأكد من أن البريد الإلكتروني هو الذي تم "
+"التسجيل به, و تحقق من الرسائل غير المرغوب بها "
+
+
+#: user/templates/password_reset_form.html:8
+msgid ""
+"Enter the e-mail address associated with your account. Click submit to have "
+"your password e-mailed to you."
+msgstr ""
+"الرجاء ادخل البريد الإلكتروني المرتبط بحسابك وثم الضغط على زر إرسال لتصلك "
+"رسالة على بريدك الإلكتروني لإستعادة كلمة المرور"
+
+#: user/templates/password_reset_form.html:14
+msgid "Send Reset Email"
+msgstr "إرسال رسالة إعادة التعين"
+
+#: user/templates/register.html:15
+msgid "Already have an account?"
+msgstr "هل لديك حساب مسبقاً؟"
+
+#: user/templates/update_profile.html:23 user/templates/user_profile.html:31
+msgid "Email Address"
+msgstr "البريد الإلكتروني"
+
+#: user/templates/update_profile.html:44 user/templates/user_profile.html:49
+msgid "Gender"
+msgstr "الجنس"
+
+#: user/templates/user_profile.html:23
+msgid "Edit Info"
+msgstr "تعديل البيانات"
+
+#: user/templates/user_profile.html:38
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: user/views.py:42
+msgid "Please enter a correct email address and password."
+msgstr " الرجاء إدخال عنوان بريد إلكتروني و كلمة سر صحيحين."
+
+#: user/views.py:106
+msgid "Profile updated"
+msgstr "تم تعديل الملف الشخصي"
+
+#: user/views.py:128
+msgid "Password Changed Successfully"
+msgstr "تم تعديل كلمة المرور بنجاح"
