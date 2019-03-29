@@ -1,15 +1,16 @@
 from django.conf.urls import url
 from user import views
 
+from main.helper import anonymous_required
 from django.contrib.auth.decorators import login_required
 
 # TEMPLATE TAGGING
 app_name = 'user'
 
 urlpatterns = (
-    url('^login', views.UserLogin.as_view(), name='user_login'),
+    url('^login', anonymous_required(views.UserLogin.as_view()), name='user_login'),
     url('^logout', views.user_logout, name='user_logout'),
-    url(r'^register/$', views.UserRegister.as_view(), name='user_register'),
+    url(r'^register/$', anonymous_required(views.UserRegister.as_view()), name='user_register'),
     url(r'^profile/$', login_required(views.ProfileDetailView.as_view()), name='profile'),
     url(r'^profile/update/$', login_required(views.ProfileUpdateView.as_view()), name='update_profile'),
     url(r'^change_password/$', login_required(views.ChangePassword.as_view()), name='change_password'),

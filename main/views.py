@@ -1,8 +1,5 @@
-import django
-
-django.setup()
-
 from main.tasks import single_crawl_without_scheduling
+from django.http import Http404
 
 from django.contrib import messages
 
@@ -29,7 +26,7 @@ class NewsListView(ListView):
             website = WebsiteInfo.objects.get(pk=self.kwargs['pk'])
             return News.objects.filter(news_website__name__contains=website.key)
         except:
-            pass
+            raise Http404
 
 
 class NewsDetailView(DetailView):
@@ -47,7 +44,8 @@ class SerchForm(TemplateView):
             if websites_list:
                 data_news = []
                 for website in websites_list:
-                    data_news += News.objects.filter(title__icontains=text, news_website__name__icontains=website)
+                    data_news += News.objects.filter(title__icontains=text, description__icontains=text,
+                                                     news_website__name__icontains=website)
                 if data_news:
                     return render(request, 'main/news_list.html', {'news_list': data_news})
                 else:
@@ -55,11 +53,11 @@ class SerchForm(TemplateView):
                     if there_have_news.get()[0]:
                         for website in websites_list:
                             website_news_name = website + "_" + text.replace(" ", "_")
-                            data_news += News.objects.filter(title__icontains=text,
+                            data_news += News.objects.filter(title__icontains=text, description__icontains=text,
                                                              news_website__name=website_news_name)
                     return render(request, 'main/news_list.html', {'news_list': data_news})
             else:
-                data_news = News.objects.filter(title__icontains=text)
+                data_news = News.objects.filter(title__icontains=text, description__icontains=text, )
                 if data_news:
                     return render(request, 'main/news_list.html', {'news_list': data_news})
                 else:
@@ -73,35 +71,7 @@ class SerchForm(TemplateView):
 class PermissionDenied(TemplateView):
     template_name = 'main/403.html'
 
-# def main():
-#     print("python main function")
-#     text = "israel"
-#     website = ["Al-Jazeera English"]
-#     single_crawl_without_scheduling.apply_async(text, website)
-#
-#
-# if __name__ == '__main__':
-#     main()
-#
-# # def search(request):
-# #     if request.method == "POST":
-# #         text = request.POST.get('search_text')
-# #         website = request.POST.getlist('check')
-# #         if text:
-# #             if website:
-# #                 pass
-# #             else:
-# #                 news = News.objects.filter(title__contains=text)
-# #
-# #             for data in news:
-# #                 data.title
-# #         if news:
-# #             return render(request, 'main/index.html', {})
-# #         else:
-# #             if website:
-# #                 new_website = NewsWebsite()
-# #                 new_website.name = text + "search"
-# #                 new_website.url = "www.www"
-# #                 new_website.scraper = "sdfs"
-# #                 new_website.scraper_runtime = "asdasd"
-# #             return render(request, 'main/index.html', {})
+
+def single_crawl_without_scheduling_celery(search_term, websites_keys, scheduled=True):
+    result = single_crawl_without_scheduling.apply_async(args=[search_term, websites_keys, scheduled])
+    return result.get()[0]
