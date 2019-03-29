@@ -56,6 +56,11 @@ INSTALLED_APPS = [
     'dynamic_scraper',
     'user',
     'main',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django_filters',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -143,6 +148,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 STATIC_URL = '/static/'
 NPM_EXECUTABLE_PATH = 'npm'
 STATICFILES_FINDERS = (

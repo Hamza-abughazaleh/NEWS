@@ -40,9 +40,11 @@ def single_crawl_without_scheduling(search_term, websites_keys, scheduled=True):
                 website = WebsiteInfo.objects.get(key=website_key)
                 website_url = concatenate_website_domain(website.search_domain, search_term)
                 website_news_name = website_key + "_" + search_term.replace(" ", "_")
+                websites_scraper = website.scraper
                 websites_scraper_runtime = create_scraper_runtime()
                 news_website = NewsWebsite.objects.create(name=website_news_name, url=website_url,
-                                                          scraper=websites_scraper_runtime)
+                                                          scraper=websites_scraper,
+                                                          scraper_runtime=websites_scraper_runtime)
                 website_products_objects_to_be_deleted.append(news_website)
                 process.crawl('news_spider', id=news_website.id, do_action='yes' , )
             process.start()
