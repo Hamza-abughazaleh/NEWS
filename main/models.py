@@ -40,6 +40,7 @@ class News(models.Model):
     description = models.TextField(blank=True)
     image = models.URLField()
     url = models.URLField()
+    item_website = models.CharField(max_length=200,null=True,blank=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __unicode__(self):

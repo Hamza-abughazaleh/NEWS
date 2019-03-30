@@ -25,13 +25,14 @@ from main.views import PermissionDenied
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
-
 ]
 urlpatterns += i18n_patterns(
     url(r'^', include('main.urls')),
     url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^permission-denied', PermissionDenied.as_view(), name='permission-denied')
+    url(r'^permission-denied', PermissionDenied.as_view(), name='permission-denied'),
+    url(r'^api/v1/', include('main.api.urls'), name="api-root"),
+
 )
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

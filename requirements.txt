@@ -49,3 +49,8 @@ six==1.11.0
 Twisted==18.9.0
 w3lib==1.19.0
 zope.interface==4.6.0
+html2text==2018.1.9
+Markdown==3.0.1
+djangorestframework==3.6.4
+django-filter==2.1.0
+django-rest-auth==0.9.3
