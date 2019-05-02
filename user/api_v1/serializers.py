@@ -44,6 +44,7 @@ class UserDetailsSerializer(serializers.ModelSerializer):
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField(required=settings.ACCOUNT_EMAIL_REQUIRED)
     password1 = serializers.CharField(required=True, write_only=True)
+    password2 = serializers.CharField(required=True,write_only=True)
 
     def validate_email(self, email):
         email = get_adapter().clean_email(email)
@@ -56,13 +57,16 @@ class RegisterSerializer(serializers.Serializer):
     def validate_password1(self, password):
         return get_adapter().clean_password(password)
 
+    def validate(self, data):
+        if data['password1'] != data['password2']:
+            raise serializers.ValidationError(_("The two password fields didn't match."))
+        return data
+
+
     def get_cleaned_data(self):
         return {
             'email': self.validated_data.get('email', ''),
             'password1': self.validated_data.get('password1', ''),
-            'dob': self.validated_data.get('dob', ''),
-            'gender': self.validated_data.get('gender', ''),
-
         }
 
     def save(self, request):
