@@ -50,18 +50,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kombu.transport.django',
-    "compressor",
-    'djcelery',
-    'dynamic_scraper',
-    'user',
-    'main',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
-    'django_filters',
+    'django.contrib.sites',
 
 ]
+
+APPLICATION_PACKAGES = [
+    'user',
+    'main',
+]
+DJANGO_PACKAGES = ['kombu.transport.django',
+                   "compressor",
+                   'djcelery',
+                   'dynamic_scraper',
+                   'rest_framework',
+                   'rest_framework.authtoken',
+                   'rest_auth',
+                   'allauth',
+                   'allauth.account',
+                   'rest_auth.registration',
+                   'django_filters',
+                   'django_user_agents',
+
+                   ]
+INSTALLED_APPS.extend(APPLICATION_PACKAGES)
+INSTALLED_APPS.extend(DJANGO_PACKAGES)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +84,11 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
+
 ]
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'News.urls'
 
@@ -146,6 +162,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 REST_FRAMEWORK = {
@@ -157,6 +180,20 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+
+REST_AUTH_REGISTER_SERIALIZERS = {'REGISTER_SERIALIZER': 'user.api_v1.serializers.RegisterSerializer', }
+
+# emaillogin_project/settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
 STATIC_URL = '/static/'
 NPM_EXECUTABLE_PATH = 'npm'
 STATICFILES_FINDERS = (
@@ -213,10 +250,10 @@ AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/user/login/'
 
 LOGIN_REDIRECT_URL = '/user/profile/'
-# DEFAULT_FROM_EMAIL = 'noreply@prizila.com'
-# # Password Reset Email
-# EMAIL_HOST = 'email-smtp.eu-west-1.amazonaws.com'
-# EMAIL_HOST_USER = 'AKIAIQZXO5TOOOQPROUQ'  # use your gmail
-# EMAIL_HOST_PASSWORD = 'ApNbP9P56EQPbaWxvx2oBGG1BeqehKWl16xMOwfpJhZA'  # gmail password
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'noreply@News.com'
+# Password Reset Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '**************@gmail.com'  # use your gmail
+EMAIL_HOST_PASSWORD = '**********'  # gmail password # gmail password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
