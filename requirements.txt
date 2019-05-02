@@ -54,3 +54,6 @@ Markdown==3.0.1
 djangorestframework==3.6.4
 django-filter==2.1.0
 django-rest-auth==0.9.3
+djangorestframework-filters==1.0.0.dev0
+django-allauth==0.38
+django-user-agents==0.3.2
