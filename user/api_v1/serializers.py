@@ -1,4 +1,3 @@
-from django.core.files import File
 
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
@@ -60,9 +59,6 @@ class RegisterSerializer(serializers.Serializer):
         return {
             'email': self.validated_data.get('email', ''),
             'password1': self.validated_data.get('password1', ''),
-            'dob': self.validated_data.get('dob', ''),
-            'gender': self.validated_data.get('gender', ''),
-
         }
 
     def save(self, request):
