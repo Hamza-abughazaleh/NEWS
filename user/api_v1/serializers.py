@@ -1,5 +1,3 @@
-from django.core.files import File
-
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from allauth.utils import email_address_exists
@@ -14,18 +12,9 @@ from django.utils.translation import gettext_lazy as _
 class UserSerializer(serializers.ModelSerializer):
     user_details = serializers.HyperlinkedIdentityField(view_name='user-v1:user-detail',
                                                         read_only=True)
+    phone_number = serializers.RegexField(required=False, regex=r'^\d{9,15}$', max_length=15,
+                                          help_text=_("In case we need to contact you"), )
 
-    class Meta:
-        model = models.User
-        fields = (
-            'pk',
-            'email',
-            'first_name',
-            'user_details',
-        )
-
-
-class UserDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields = (
@@ -35,16 +24,43 @@ class UserDetailsSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'phone_number',
+            'gender',
+            'address',
+            'is_staff',
+            'is_active',
+            'date_joined',
+            'user_details',
+            'phone_number',
+        )
+        read_only_fields = ('pk', 'username', 'phone_number', 'email', 'is_staff', 'is_active', 'date_joined')
+
+
+class UserDetailsSerializer(serializers.ModelSerializer):
+    phone_number = serializers.RegexField(required=False, regex=r'^\d{9,15}$', max_length=15,
+                                          help_text=_("In case we need to contact you"), )
+
+    class Meta:
+        model = models.User
+        fields = (
+            'pk',
+            'email',
+            'username',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'gender',
+            'address',
             'is_staff',
             'is_active',
             'date_joined'
         )
+        read_only_fields = ('pk', 'username', 'phone_number', 'email', 'is_staff', 'is_active', 'date_joined')
 
 
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField(required=settings.ACCOUNT_EMAIL_REQUIRED)
     password1 = serializers.CharField(required=True, write_only=True)
-    password2 = serializers.CharField(required=True,write_only=True)
+    password2 = serializers.CharField(required=True, write_only=True)
 
     def validate_email(self, email):
         email = get_adapter().clean_email(email)
@@ -61,7 +77,6 @@ class RegisterSerializer(serializers.Serializer):
         if data['password1'] != data['password2']:
             raise serializers.ValidationError(_("The two password fields didn't match."))
         return data
-
 
     def get_cleaned_data(self):
         return {

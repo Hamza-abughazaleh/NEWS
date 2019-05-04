@@ -31,7 +31,7 @@ urlpatterns += i18n_patterns(
     url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^permission-denied', PermissionDenied.as_view(), name='permission-denied'),
-    url(r'^api/v1/', include('main.api.urls'), name="api-root"),
+    url(r'^api/v1/main/', include('main.api.urls'), name="api-root"),
     url(r'^api/v1/user/', include('user.api_v1.urls', namespace='user-v1')),
     url('api/v1/rest-auth/', include('rest_auth.urls')),
     url('api/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
