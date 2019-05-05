@@ -5,6 +5,8 @@ from main.api.serializers import WebSiteInfoSerializer, NewsSerializer, NewsDeta
 from main.models import WebsiteInfo, News, NewsWebsite
 from main.views import single_crawl_without_scheduling_celery
 
+from django.utils.translation import get_language
+
 
 class WebSiteViewSet(viewsets.ModelViewSet):
     """from django.utils.decorators import method_decorator
@@ -15,6 +17,13 @@ from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
     serializer_class = WebSiteInfoSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('key', 'url',)
+
+    def get_queryset(self):
+        q = super(WebSiteViewSet, self).get_queryset()
+        if get_language() == 'ar':
+            return q.filter(website_type=get_language())
+        else:
+            return q.filter(website_type=get_language())
 
 
 class NewsWebSiteViewSet(viewsets.ModelViewSet):

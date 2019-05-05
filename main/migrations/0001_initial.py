@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('dynamic_scraper', '0026_auto_20190224_0944'),
+        ('dynamic_scraper', '0026_auto_20190222_2327'),
     ]
 
     operations = [
