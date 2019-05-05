@@ -10,8 +10,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserSerializer(serializers.ModelSerializer):
-    user_details = serializers.HyperlinkedIdentityField(view_name='user-v1:user-detail',
-                                                        read_only=True)
     phone_number = serializers.RegexField(required=False, regex=r'^\d{9,15}$', max_length=15,
                                           help_text=_("In case we need to contact you"), )
 
@@ -29,30 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
             'is_staff',
             'is_active',
             'date_joined',
-            'user_details',
             'phone_number',
-        )
-        read_only_fields = ('pk', 'username', 'phone_number', 'email', 'is_staff', 'is_active', 'date_joined')
-
-
-class UserDetailsSerializer(serializers.ModelSerializer):
-    phone_number = serializers.RegexField(required=False, regex=r'^\d{9,15}$', max_length=15,
-                                          help_text=_("In case we need to contact you"), )
-
-    class Meta:
-        model = models.User
-        fields = (
-            'pk',
-            'email',
-            'username',
-            'first_name',
-            'last_name',
-            'phone_number',
-            'gender',
-            'address',
-            'is_staff',
-            'is_active',
-            'date_joined'
         )
         read_only_fields = ('pk', 'username', 'phone_number', 'email', 'is_staff', 'is_active', 'date_joined')
 
