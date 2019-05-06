@@ -42,7 +42,7 @@ class Task(models.Model):
     action_type = models.CharField(max_length=10, )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.CharField(max_length=50, null=True, blank=True)
-    created_date = models.DateTimeField(default=datetime.datetime.now())
+    created_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     ip_address = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):

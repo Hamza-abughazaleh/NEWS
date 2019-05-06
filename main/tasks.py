@@ -29,6 +29,7 @@ def prepare_data(search_term, websites_keys):
 def concatenate_website_domain(domain, search_term):
     return domain.replace("###", search_term.replace(" ", "+"))
 
+
 @task()
 def single_crawl_without_scheduling(search_term, websites_keys, scheduled=True):
     try:
@@ -44,9 +45,10 @@ def single_crawl_without_scheduling(search_term, websites_keys, scheduled=True):
                 websites_scraper_runtime = create_scraper_runtime()
                 news_website = NewsWebsite.objects.create(name=website_news_name, url=website_url,
                                                           scraper=websites_scraper,
-                                                          scraper_runtime=websites_scraper_runtime)
+                                                          scraper_runtime=websites_scraper_runtime,
+                                                          language=website.website_type)
                 website_products_objects_to_be_deleted.append(news_website)
-                process.crawl('news_spider', id=news_website.id, do_action='yes' , )
+                process.crawl('news_spider', id=news_website.id, do_action='yes', )
             process.start()
             if not scheduled:
                 for website_products in website_products_objects_to_be_deleted:
@@ -54,6 +56,7 @@ def single_crawl_without_scheduling(search_term, websites_keys, scheduled=True):
         return True, "crawled success"
     except Exception as e:
         return False, e
+
 
 def create_scraper_runtime():
     scraper_runtime_type = 'S'
