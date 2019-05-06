@@ -15,3 +15,5 @@ def parse_descreption_to_text(description):
 def image_res(website, image):
     if website[:3] == "TRT":
         return image.replace("/w32", "/w960")
+    else:
+        return image

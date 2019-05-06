@@ -1,9 +1,12 @@
 import logging
+from datetime import datetime
+
 from django.db.utils import IntegrityError
 from scrapy.exceptions import DropItem
 from dynamic_scraper.models import SchedulerRuntime
 
-from main.parsing import parse_descreption_to_text ,image_res
+from main.parsing import parse_descreption_to_text, image_res
+
 
 class DjangoWriterPipeline(object):
 
@@ -12,11 +15,12 @@ class DjangoWriterPipeline(object):
             try:
                 item['news_website'] = spider.ref_object
                 item['item_website'] = spider.ref_object.name.split("_")[0]
+                item['created_date'] = datetime.now()
                 if 'description' in item:
                     item['description'] = parse_descreption_to_text(item['description'])
 
                 if 'image' in item:
-                    item['image'] = image_res(spider.ref_object.name,item['image'])
+                    item['image'] = image_res(spider.ref_object.name, item['image'])
 
                 checker_rt = SchedulerRuntime(runtime_type='C')
                 checker_rt.save()
