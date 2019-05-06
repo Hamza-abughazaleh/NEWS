@@ -14,7 +14,8 @@
                 {% for website in websites %}
                     <div class="col-lg-4 col-sm-6 portfolio-item">
                         <div class="card w-100 h-100">
-                            <a href="{% url 'news_list' pk=website.id %}"><img class="card-img-top" src="{{ website.image.url }}" alt=""></a>
+                            <a href="{% url 'news_list' pk=website.id %}"><img class="card-img-top"
+                                                                               src="{{ website.image.url }}" alt=""></a>
                         </div>
                     </div>
                 {% endfor %}

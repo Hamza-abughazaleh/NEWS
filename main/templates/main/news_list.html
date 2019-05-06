@@ -27,7 +27,11 @@
     {% else %}
         <section class="testimonials text-center ">
             <div class="container">
-                <h2 class="mb-5">No Result<br><br>May be your keyword not correct<br><br>Please try with another keyword
+                <h2 class="mb-5">No Result<br>
+                    {% if not news_list_view %}
+                        <br>May be your keyword not correct<br>
+                        <br>Please try with another keyword
+                    {% endif %}
                 </h2>
                 <h2>Come back later this news may be available to us</h2>
             </div>
