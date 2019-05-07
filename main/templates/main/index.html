@@ -9,23 +9,27 @@
     <!-- Testimonials -->
     {% if news_list %}
 
-        <section class="text-center mt-5">
+        <section class="mt-5">
             <div class="container">
                 <h2 class="mb-5">{% trans "Last News" %}</h2>
                 <div class="row">
                     <div class="card-columns">
                         {% for news in news_list %}
-                            <div class="card text-center">
+                            <div class="card">
                                 <div class="card-body">
+                                    <p class="card-text">
+                                        <small class="text-muted">{{ news.created_date }}</small>
+                                        <small class="text-muted {% if LANGUAGE_CODE == 'en' %}pull-right{% else %}pull-left{% endif %}">
+                                            {{ news.item_website }}</small>
+                                    </p>
                                     <div class="card-text w-100 h-100">
                                         <a href="{% url 'news_detail' pk=news.id %}">
                                             <img class="card-img-top h-100" src="{{ news.image }}" alt="">
                                         </a>
                                     </div>
                                     <h5 class="card-title pt-2">{{ news.title }}</h5>
-                                    <p class="card-text pt-2">
-                                        <small class="text-muted">{{ news.created_date }}</small>
-                                    </p>
+                                    <a class="btn btn-primary" href="{% url 'news_detail' pk=news.pk %}">Read More</a>
+
                                 </div>
                             </div>
                         {% endfor %}

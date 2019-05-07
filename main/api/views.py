@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 from main.api.serializers import WebSiteInfoSerializer, NewsSerializer, NewsDetailsSerializer, NewsWebsiteSerializer
 from main.models import WebsiteInfo, News, NewsWebsite
+from main.utils import get_news_distinct
 from main.views import single_crawl_without_scheduling_celery
 
 from django.utils.translation import get_language
@@ -36,11 +37,31 @@ class NewsWebSiteViewSet(viewsets.ModelViewSet):
     search_fields = ('name', 'url',)
 
 
+class LastNewsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    serializer_class = NewsSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('title', 'description',)
+    details_serializer_class = NewsDetailsSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        kwargs['context'] = self.get_serializer_context()
+        serializer = self.details_serializer_class(instance, context={'request': request})
+        return Response(serializer.data)
+
+    def get_queryset(self):
+        data = get_news_distinct()
+        return data
+
+
 class NewsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = News.objects.all()
+    queryset = News.objects.all().order_by('-created_date')
     serializer_class = NewsSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('title', 'description',)

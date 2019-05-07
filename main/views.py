@@ -37,7 +37,7 @@ class NewsListView(ListView):
     def get_queryset(self, **kwargs):
         try:
             website = WebsiteInfo.objects.get(pk=self.kwargs['pk'])
-            return News.objects.filter(news_website__name__contains=website.key)
+            return News.objects.filter(news_website__name__contains=website.key).order_by('-created_date')
         except:
             raise Http404
 
