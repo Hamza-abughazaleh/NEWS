@@ -7,6 +7,37 @@
     {% include 'main/search.html' %}
 
     <!-- Testimonials -->
+    {% if news_list %}
+
+        <section class="mt-5">
+            <div class="container">
+                <h2 class="mb-5">{% trans "Last News" %}</h2>
+                <div class="row">
+                    <div class="card-columns">
+                        {% for news in news_list %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <small class="text-muted">{{ news.created_date }}</small>
+                                        <small class="text-muted {% if LANGUAGE_CODE == 'en' %}pull-right{% else %}pull-left{% endif %}">
+                                            {{ news.item_website }}</small>
+                                    </p>
+                                    <div class="card-text w-100 h-100">
+                                        <a href="{% url 'news_detail' pk=news.id %}">
+                                            <img class="card-img-top h-100" src="{{ news.image }}" alt="">
+                                        </a>
+                                    </div>
+                                    <h5 class="card-title pt-2">{{ news.title }}</h5>
+                                    <a class="btn btn-primary" href="{% url 'news_detail' pk=news.pk %}">Read More</a>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
     <section class="testimonials text-center ">
         <div class="container">
             <h2 class="mb-5">{% trans "Our Partner" %}</h2>
@@ -14,7 +45,8 @@
                 {% for website in websites %}
                     <div class="col-lg-4 col-sm-6 portfolio-item">
                         <div class="card w-100 h-100">
-                            <a href="{% url 'news_list' pk=website.id %}"><img class="card-img-top" src="{{ website.image.url }}" alt=""></a>
+                            <a href="{% url 'news_list' pk=website.id %}"><img class="card-img-top h-100"
+                                                                               src="{{ website.image.url }}" alt=""></a>
                         </div>
                     </div>
                 {% endfor %}

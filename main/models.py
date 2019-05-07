@@ -7,25 +7,30 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class WebsiteInfo(models.Model):
-    GENDER_CHOICES = (
+    LANGUAGE_CHOICES = (
         ('ar', _('Arabic')),
         ('en', _('English')),
     )
     key = models.CharField(max_length=30)
-    website_type = models.CharField(max_length=2, blank=True, null=True, choices=GENDER_CHOICES)
+    website_type = models.CharField(max_length=2, blank=True, null=True, choices=LANGUAGE_CHOICES)
     search_domain = models.CharField(max_length=200)
     scraper = models.ForeignKey(Scraper, blank=True, null=True, on_delete=models.SET_NULL)
-    image = models.ImageField(max_length=256,upload_to='website_pics')
+    image = models.ImageField(max_length=256, upload_to='website_pics')
 
     def __str__(self):
         return self.key
 
 
 class NewsWebsite(models.Model):
+    LANGUAGE_CHOICES = (
+        ('ar', _('Arabic')),
+        ('en', _('English')),
+    )
     name = models.CharField(max_length=200)
     url = models.URLField()
     scraper = models.ForeignKey(Scraper, blank=True, null=True, on_delete=models.SET_NULL)
     scraper_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
+    language = models.CharField(max_length=2, blank=True, null=True, choices=LANGUAGE_CHOICES)
 
     def __unicode__(self):
         return self.name
@@ -40,8 +45,9 @@ class News(models.Model):
     description = models.TextField(blank=True)
     image = models.URLField()
     url = models.URLField()
-    item_website = models.CharField(max_length=200,null=True,blank=True)
+    item_website = models.CharField(max_length=200, null=True, blank=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
+    created_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __unicode__(self):
         return self.title

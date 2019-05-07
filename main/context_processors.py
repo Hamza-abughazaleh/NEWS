@@ -11,10 +11,9 @@ def get_websites(request):
     return {'websites': websites}
 
 
-
 def metadata(request):
     """
     Add some generally useful metadata to the template context
     """
     return {'debug': settings.DEBUG,
-           }
+            }

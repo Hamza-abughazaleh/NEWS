@@ -9,24 +9,42 @@ from django.core.urlresolvers import reverse
 from django.views.generic import TemplateView, ListView, DetailView
 
 from main.models import News, WebsiteInfo
-
+from random import sample
 
 # Create your views here.
-def index(request):
+from main.utils import get_news_distinct
+
+
+class Home(TemplateView):
     home = True
-    return render(request, 'main/index.html', {"home": home})
+    template_name = 'main/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Home, self).get_context_data(**kwargs)
+        context['home'] = self.home
+        # count = News.objects.all().count()
+        # rand_ids = sample(range(1, count), 10)
+        # context['news_list'] = News.objects.filter(id__in=rand_ids).distinct()
+        context['news_list'] = get_news_distinct()
+        return context
 
 
 class NewsListView(ListView):
     model = News
     template_name = 'main/news_list.html'
+    news_list = True
 
     def get_queryset(self, **kwargs):
         try:
             website = WebsiteInfo.objects.get(pk=self.kwargs['pk'])
-            return News.objects.filter(news_website__name__contains=website.key)
+            return News.objects.filter(news_website__name__contains=website.key).order_by('-created_date')
         except:
             raise Http404
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsListView, self).get_context_data(**kwargs)
+        context['news_list_view'] = self.news_list
+        return context
 
 
 class NewsDetailView(DetailView):

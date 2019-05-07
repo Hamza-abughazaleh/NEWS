@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from main.models import NewsWebsite, News ,WebsiteInfo
+from main.models import NewsWebsite, News, WebsiteInfo
 
 
 class NewsWebsiteAdmin(admin.ModelAdmin):
@@ -16,14 +16,13 @@ class NewsWebsiteAdmin(admin.ModelAdmin):
 
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'news_website', 'url_',)
+    list_display = ('id', 'title', 'news_website', 'url_', 'created_date')
     list_display_links = ('title',)
     raw_id_fields = ('checker_runtime',)
 
     def url_(self, instance):
         return '<a href="{url}" target="_blank">{title}</a>'.format(
             url=instance.url, title=instance.url)
-
 
     # readonly_fields = ('djson', 'djson_formatted')
 
