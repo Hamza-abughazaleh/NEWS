@@ -16,6 +16,6 @@ urlpatterns = router.urls
 urlpatterns = [
     # urls for Django Rest Framework API
     # url('^', include(router.urls)),
-    url(r'^update/(?P<pk>\d+)/$', csrf_exempt(api.UserViewSet.as_view()), name='user-detail')
+    url(r'^profile/$', csrf_exempt(api.UserViewSet.as_view()), name='user-detail')
 
 ]
