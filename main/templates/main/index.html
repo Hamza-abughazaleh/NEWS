@@ -13,8 +13,8 @@
             <div class="container">
                 <h2 class="mb-5">{% trans "Last News" %}</h2>
                 <div class="row">
-                    <div class="card-columns">
-                        {% for news in news_list %}
+                    {% for news in news_list %}
+                        <div class="col-12 col-md-4 pt-4">
                             <div class="card">
                                 <div class="card-body">
                                     <p class="card-text">
@@ -28,12 +28,13 @@
                                         </a>
                                     </div>
                                     <h5 class="card-title pt-2">{{ news.title }}</h5>
-                                    <a class="btn btn-primary" href="{% url 'news_detail' pk=news.pk %}">Read More</a>
+                                    <a class="btn btn-primary" href="{% url 'news_detail' pk=news.pk %}">Read
+                                        More</a>
 
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
