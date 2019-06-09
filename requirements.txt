@@ -11,7 +11,7 @@ constantly==15.1.0
 cryptography==2.3.1
 cssselect==1.0.3
 decorator==4.3.0
-Django==1.11
+Django==1.11.6
 django-appconf==1.0.2
 django-celery==3.2.1
 django-compressor==2.2
@@ -51,7 +51,7 @@ w3lib==1.19.0
 zope.interface==4.6.0
 html2text==2018.1.9
 Markdown==3.0.1
-djangorestframework==3.6.4
+djangorestframework==3.9.4
 django-filter==2.1.0
 django-rest-auth==0.9.3
 djangorestframework-filters==1.0.0.dev0

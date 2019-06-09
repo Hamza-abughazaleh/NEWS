@@ -9,7 +9,7 @@ from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 
 
-class UserSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     phone_number = serializers.RegexField(required=False, regex=r'^\d{9,15}$', max_length=15,
                                           help_text=_("In case we need to contact you"), )
 

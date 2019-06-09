@@ -47,7 +47,7 @@ class News(models.Model):
     url = models.URLField()
     item_website = models.CharField(max_length=200, null=True, blank=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
-    created_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_date = models.DateTimeField(null=True, blank=True)
 
     def __unicode__(self):
         return self.title
