@@ -43,7 +43,6 @@ class LastNewsViewSet(viewsets.ModelViewSet):
     """
     serializer_class = NewsSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('title', 'description',)
     details_serializer_class = NewsDetailsSerializer
 
     def retrieve(self, request, *args, **kwargs):
@@ -87,7 +86,8 @@ class NewsViewSet(viewsets.ModelViewSet):
 
         search_term = self.request._request.GET.get("search", "").strip()
         if not search_term:
-            return []
+            filtered_queryset = super(NewsViewSet, self).filter_queryset(queryset)
+            return filtered_queryset
         if not self.request._request.GET.getlist("websites"):
             website_info_qs = WebsiteInfo.objects.all()
         else:
