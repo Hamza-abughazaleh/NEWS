@@ -5,7 +5,7 @@ attrs==18.2.0
 Automat==0.7.0
 beautifulsoup4==4.6.3
 billiard==3.3.0.23
-celery==3.1.25
+celery==5.2.2
 cffi==1.11.5
 constantly==15.1.0
 cryptography==2.3.1
